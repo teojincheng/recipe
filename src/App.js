@@ -13,18 +13,6 @@ function App() {
       <span>Counter {counter}</span>
       <button onClick={() => dispatch(increment())}>+</button>
       <button onClick={() => dispatch(decrement())}>-</button>
-
-      <section>
-        <input
-          type="text"
-          onChange={(event) =>
-            dispatch({ type: "INPUT-TEXT", payload: event.target.value })
-          }
-          value={inputValue}
-          id="submission-text"
-        />
-        <button>Submit</button>
-      </section>
     </div>
   );
 }
