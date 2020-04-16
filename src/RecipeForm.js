@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import "./RecipeForm.css";
 import { useSelector, useDispatch } from "react-redux";
-import { inputText } from "./actions";
 
 function RecipeForm() {
+  const [recipeObj, setRecipeObj] = useState({
+    name: "",
+    description: "",
+    cookingTime: "",
+    ingredients: "",
+    cookingMethod: "",
+  });
   const inputValue = useSelector((state) => state.inputValue);
   const dispatch = useDispatch();
 
@@ -14,12 +21,14 @@ function RecipeForm() {
       <div>
         <input
           type="text"
-          name="recipe-name"
+          name="name"
           onChange={(event) =>
-            dispatch({ type: "INPUT-TEXT", payload: event.target.value })
+            setRecipeObj({
+              ...recipeObj,
+              [event.target.name]: event.target.value,
+            })
           }
-          value={inputValue}
-          id="recipe-name"
+          value={recipeObj.name}
         />
       </div>
 
@@ -27,28 +36,40 @@ function RecipeForm() {
         <label>Recipe description:</label>
       </div>
       <div>
-        <textarea></textarea>
+        <textarea
+          onChange={() => setRecipeObj(recipeObj.description)}
+        ></textarea>
       </div>
 
       <div>
         <label>Cooking time:</label>
       </div>
       <div>
-        <input type="text" name="cooking-time" />
+        <input
+          type="text"
+          name="cooking-time"
+          onChange={() => setRecipeObj(recipeObj.cookingTime)}
+        />
       </div>
 
       <div>
         <label>Ingredients:</label>
       </div>
       <div>
-        <textarea></textarea>
+        <textarea
+          onChange={() => setRecipeObj(recipeObj.ingredients)}
+        ></textarea>
       </div>
 
       <div>
         <label>Cooking method:</label>
       </div>
       <div>
-        <input type="text" name="method" />
+        <input
+          type="text"
+          name="method"
+          onChange={() => setRecipeObj(recipeObj.cookingMethod)}
+        />
       </div>
       <button>Upload</button>
     </div>
