@@ -15,6 +15,7 @@ function RecipeForm() {
 
   return (
     <div className="wrapper">
+      <h2>Post a recipe</h2>
       <div>
         <label>Recipe name:</label>
       </div>
