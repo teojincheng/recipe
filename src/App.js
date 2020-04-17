@@ -1,17 +1,30 @@
 import React from "react";
 import "./App.css";
+import RecipeForm from "./RecipeForm";
+import RecipeList from "./RecipeList";
 import { useSelector, useDispatch } from "react-redux";
-import { BrowserRouter, Switch, Route, Link, Redirect } from "react-router-dom";
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+  NavLink,
+} from "react-router-dom";
 import Routes from "./constants/routes";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <header>
+          <NavLink to={Routes.list}>Recipes List</NavLink>
+          <NavLink to={Routes.form}>Upload Recipe</NavLink>
+        </header>
         <Switch>
-          <Route path={Routes.list} />
-          <Route path={Routes.form} />
-          <Route exact from="/" />
+          <Route path={Routes.list} component={RecipeList} />
+          <Route path={Routes.form} component={RecipeForm} />
+          <Route exact from="/" component={RecipeForm} />
         </Switch>
       </BrowserRouter>
     </div>
