@@ -37,7 +37,13 @@ function RecipeForm() {
       </div>
       <div>
         <textarea
-          onChange={() => setRecipeObj(recipeObj.description)}
+          name="description"
+          onChange={(event) =>
+            setRecipeObj({
+              ...recipeObj,
+              [event.target.name]: event.target.value,
+            })
+          }
         ></textarea>
       </div>
 
@@ -47,8 +53,14 @@ function RecipeForm() {
       <div>
         <input
           type="text"
-          name="cooking-time"
-          onChange={() => setRecipeObj(recipeObj.cookingTime)}
+          name="cookingTime"
+          onChange={(event) =>
+            setRecipeObj({
+              ...recipeObj,
+              [event.target.name]: event.target.value,
+            })
+          }
+          value={recipeObj.cookingTime}
         />
       </div>
 
@@ -57,7 +69,13 @@ function RecipeForm() {
       </div>
       <div>
         <textarea
-          onChange={() => setRecipeObj(recipeObj.ingredients)}
+          name="ingredients"
+          onChange={(event) =>
+            setRecipeObj({
+              ...recipeObj,
+              [event.target.name]: event.target.value,
+            })
+          }
         ></textarea>
       </div>
 
@@ -67,8 +85,14 @@ function RecipeForm() {
       <div>
         <input
           type="text"
-          name="method"
-          onChange={() => setRecipeObj(recipeObj.cookingMethod)}
+          name="cookingMethod"
+          onChange={(event) =>
+            setRecipeObj({
+              ...recipeObj,
+              [event.target.name]: event.target.value,
+            })
+          }
+          value={recipeObj.cookingMethod}
         />
       </div>
       <button>Upload</button>
