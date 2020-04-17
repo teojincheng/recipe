@@ -10,7 +10,7 @@ function RecipeForm() {
     ingredients: "",
     cookingMethod: "",
   });
-  const inputValue = useSelector((state) => state.inputValue);
+
   const dispatch = useDispatch();
 
   return (
@@ -37,6 +37,8 @@ function RecipeForm() {
       </div>
       <div>
         <textarea
+          rows="5"
+          cols="30"
           name="description"
           onChange={(event) =>
             setRecipeObj({
@@ -69,6 +71,8 @@ function RecipeForm() {
       </div>
       <div>
         <textarea
+          rows="5"
+          cols="30"
           name="ingredients"
           onChange={(event) =>
             setRecipeObj({

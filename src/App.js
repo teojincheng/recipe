@@ -1,18 +1,19 @@
 import React from "react";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement, inputText } from "./actions";
+import { BrowserRouter, Switch, Route, Link, Redirect } from "react-router-dom";
+import Routes from "./constants/routes";
 
 function App() {
-  const counter = useSelector((state) => state.counter);
-  const inputValue = useSelector((state) => state.inputValue);
-  const dispatch = useDispatch();
-
   return (
     <div className="App">
-      <span>Counter {counter}</span>
-      <button onClick={() => dispatch(increment())}>+</button>
-      <button onClick={() => dispatch(decrement())}>-</button>
+      <BrowserRouter>
+        <Switch>
+          <Route path={Routes.list} />
+          <Route path={Routes.form} />
+          <Route exact from="/" />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
