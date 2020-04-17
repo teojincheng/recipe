@@ -15,3 +15,9 @@ export const inputText = () => {
     type: "INPUT-TEXT",
   };
 };
+
+export const uploadRecipe = () => {
+  return {
+    type: "UPLOAD-RECIPE",
+  };
+};

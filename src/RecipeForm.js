@@ -95,7 +95,11 @@ function RecipeForm() {
           value={recipeObj.cookingMethod}
         />
       </div>
-      <button>Upload</button>
+      <button
+        onClick={() => dispatch({ type: "UPLOAD-RECIPE", payload: recipeObj })}
+      >
+        Upload
+      </button>
     </div>
   );
 }
