@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import "./RecipeForm.css";
+import AxiosInstance from "./AxiosInstance";
 import { useSelector, useDispatch } from "react-redux";
+
+const postToBack = (recipe) => {
+  AxiosInstance.post("/recipes", recipe);
+};
 
 function RecipeForm() {
   const [recipeObj, setRecipeObj] = useState({
@@ -100,11 +105,7 @@ function RecipeForm() {
           value={recipeObj.cookingMethod}
         />
       </div>
-      <button
-        onClick={() => dispatch({ type: "UPLOAD-RECIPE", payload: recipeObj })}
-      >
-        Upload
-      </button>
+      <button onClick={() => postToBack(recipeObj)}>Upload</button>
     </div>
   );
 }
