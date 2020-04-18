@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import RecipeForm from "./RecipeForm";
 import RecipeList from "./RecipeList";
@@ -12,8 +12,15 @@ import {
   NavLink,
 } from "react-router-dom";
 import Routes from "./constants/routes";
+import AxiosInstance from "./AxiosInstance";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    AxiosInstance.get("/recipes").then((response) => {
+      dispatch({ type: "SET-RECIPES", payload: response.data });
+    });
+  });
   return (
     <div className="App">
       <BrowserRouter>
