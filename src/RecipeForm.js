@@ -10,6 +10,7 @@ function RecipeForm() {
     cookingTime: "",
     ingredients: "",
     cookingMethod: "",
+    timeUnit: "",
   });
 
   const dispatch = useDispatch();
@@ -56,7 +57,8 @@ function RecipeForm() {
       </div>
       <div>
         <input
-          type="text"
+          className="small-width"
+          type="number"
           name="cookingTime"
           onChange={(event) =>
             setRecipeObj({
@@ -66,6 +68,22 @@ function RecipeForm() {
           }
           value={recipeObj.cookingTime}
         />
+
+        <input
+          name="timeUnit"
+          onChange={(event) =>
+            setRecipeObj({
+              ...recipeObj,
+              [event.target.name]: event.target.value,
+            })
+          }
+          className="small-width"
+          list="cooking-time-units"
+        />
+        <datalist id="cooking-time-units">
+          <option value="mins" />
+          <option value="hrs" />
+        </datalist>
       </div>
 
       <div>
