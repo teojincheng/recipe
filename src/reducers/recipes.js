@@ -9,7 +9,9 @@ const recipesReducer = (state = [], action) => {
       recipeObj.cookingMethod = action.payload.cookingMethod;
       recipeObj.cookingTime =
         action.payload.cookingTime + action.payload.timeUnit;
-      AxiosInstance.post("/recipes", recipeObj);
+      AxiosInstance.post("/recipes", recipeObj).then(function (response) {
+        recipeObj._id = response.data;
+      });
       return state.concat(recipeObj);
     case "SET-RECIPES":
       return (state = action.payload);
