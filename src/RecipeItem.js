@@ -6,8 +6,6 @@ function RecipeItem(props) {
   const recipeId = props.match.params.recipeId;
   let arrOfRecipes = useSelector((state) => state.recipes);
   const correctRecipe = arrOfRecipes.find((recipe) => recipe._id === recipeId);
-  console.log(typeof recipeId);
-
   return (
     <div className="wrapper">
       <h2>{correctRecipe.name}</h2>
