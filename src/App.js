@@ -18,8 +18,8 @@ import AxiosInstance from "./AxiosInstance";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    AxiosInstance.get("/recipes").then((response) => {
-      dispatch({ type: "SET-RECIPES", payload: response.data });
+    AxiosInstance.get("/saved-recipes").then((response) => {
+      dispatch({ type: "SET-SAVED-RECIPES", payload: response.data });
     });
   });
   return (
