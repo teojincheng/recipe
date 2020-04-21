@@ -1,22 +1,34 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import AxiosInstance from "./AxiosInstance";
 import { useSelector } from "react-redux";
 
 function RecipeItem(props) {
   const recipeId = props.match.params.recipeId;
-  let arrOfRecipes = useSelector((state) => state.recipes);
-  const correctRecipe = arrOfRecipes.find((recipe) => recipe._id === recipeId);
+
+  const [recipeObj, setRecipeObj] = useState({
+    recipe: {},
+  });
+
+  useEffect(() => {
+    AxiosInstance.get(`/recipes/${recipeId}`).then((response) => {
+      setRecipeObj({
+        ...recipeObj,
+        recipe: response.data,
+      });
+    });
+  });
+
   return (
     <div className="wrapper">
-      <h2>{correctRecipe.name}</h2>
+      <h2>{recipeObj.recipe.name}</h2>
 
-      <div>{correctRecipe.description}</div>
+      <div>{recipeObj.recipe.description}</div>
 
-      <div>{correctRecipe.cookingTime}</div>
+      <div>{recipeObj.recipe.cookingTime}</div>
 
-      <div>{correctRecipe.ingredients}</div>
+      <div>{recipeObj.recipe.ingredients}</div>
 
-      <div>{correctRecipe.cookingMethod}</div>
+      <div>{recipeObj.recipe.cookingMethod}</div>
 
       <button>Save to favourites</button>
     </div>
