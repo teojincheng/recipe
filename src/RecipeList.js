@@ -7,14 +7,17 @@ function RecipeList() {
   const [recipesObj, setRecipesObj] = useState({
     recipesData: [],
   });
+  const [searchQuery, setSearchQuery] = useState("");
+  const [resultFromDB, setResult] = useState({ results: [] });
+  const [queryURL, setQueryURL] = useState("/recipes");
   useEffect(() => {
-    AxiosInstance.get("/recipes").then((response) => {
+    AxiosInstance.get(queryURL).then((response) => {
       setRecipesObj({
         ...recipesObj,
         recipesData: response.data,
       });
     });
-  });
+  }, [queryURL]);
 
   const arrOfElements = recipesObj.recipesData.map((recipe) => (
     <div key={recipe._id}>
@@ -26,6 +29,15 @@ function RecipeList() {
   return (
     <div>
       <h2>Recipes</h2>
+      <input
+        name="search"
+        type="text"
+        value={searchQuery}
+        onChange={(event) => setSearchQuery(event.target.value)}
+      />
+      <button onClick={() => setQueryURL(`/recipes?searchTerm=${searchQuery}`)}>
+        Search
+      </button>
       {arrOfElements}
     </div>
   );
