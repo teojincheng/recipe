@@ -10,6 +10,14 @@ function RecipeList() {
   const [searchQuery, setSearchQuery] = useState("");
   const [resultFromDB, setResult] = useState({ results: [] });
   const [queryURL, setQueryURL] = useState("/recipes");
+  const [sortType, setSortType] = useState("recent");
+  const changeQueryUrl = (sortOption) => {
+    if (sortOption === "recent") {
+      setQueryURL("/recipes");
+    } else {
+      setQueryURL(`/recipes?sortType=${sortOption}`);
+    }
+  };
   useEffect(() => {
     AxiosInstance.get(queryURL).then((response) => {
       setRecipesObj({
@@ -38,6 +46,16 @@ function RecipeList() {
       <button onClick={() => setQueryURL(`/recipes?searchTerm=${searchQuery}`)}>
         Search
       </button>
+
+      <select
+        id="sort-option"
+        onChange={(event) => changeQueryUrl(event.target.value)}
+      >
+        <option value="recent">Most recent</option>
+        <option value="oldest">Oldest</option>
+        <option value="name-descend">Name descending</option>
+        <option value="name-ascend">Name ascending</option>
+      </select>
       {arrOfElements}
     </div>
   );
