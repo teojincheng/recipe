@@ -18,6 +18,10 @@ function RecipeForm() {
     }
     return true;
   };
+
+  const makeElementEmpty = (id) => {
+    document.getElementById(id).value = "";
+  };
   const handleButtonOnClick = () => {
     let recipeObjectIsEmpty = isRecipeObjEmpty(recipeObj);
 
@@ -28,9 +32,22 @@ function RecipeForm() {
       recipeObj.cookingTime += ` ${recipeObj.timeUnit}`;
       AxiosInstance.post("/recipes", recipeObj).then(function () {
         alert("Recipe created");
+        setRecipeObj({
+          name: "",
+          description: "",
+          cookingTime: "",
+          ingredients: "",
+          cookingMethod: "",
+          timeUnit: "",
+        });
+        makeElementEmpty("descr-textarea");
+        makeElementEmpty("ingredient-textarea");
+        makeElementEmpty("method-textarea");
+        makeElementEmpty("time-unit-input");
       });
     }
   };
+
   return (
     <div className="wrapper">
       <h2>Post a recipe</h2>
@@ -56,6 +73,7 @@ function RecipeForm() {
       </div>
       <div>
         <textarea
+          id="descr-textarea"
           rows="5"
           cols="30"
           name="description"
@@ -86,6 +104,7 @@ function RecipeForm() {
         />
 
         <input
+          id="time-unit-input"
           name="timeUnit"
           onChange={(event) =>
             setRecipeObj({
@@ -107,6 +126,7 @@ function RecipeForm() {
       </div>
       <div>
         <textarea
+          id="ingredient-textarea"
           rows="5"
           cols="30"
           name="ingredients"
@@ -124,6 +144,7 @@ function RecipeForm() {
       </div>
       <div>
         <textarea
+          id="method-textarea"
           rows="5"
           cols="30"
           name="cookingMethod"
