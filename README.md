@@ -34,6 +34,7 @@ Launches the test runner in the interactive watch mode.
 ## Future work: 
 * The favourite recipes should be listed out by name
 * List of recipes can use pagination and infinite scroll
+* URL for recipe item should be the recipe name for SEO!
 
 ### Back end repo  
 https://github.com/teojincheng/recipe-backend
