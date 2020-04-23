@@ -20,8 +20,8 @@ function RecipeList() {
         ...recipesObj,
         recipesData: response.data,
       });
+      setIsLoading(false);
     });
-    setIsLoading(false);
   }, [queryURL]);
 
   const arrOfElements = recipesObj.recipesData.map((recipe) => (
@@ -34,6 +34,7 @@ function RecipeList() {
   return (
     <div>
       <h2>Recipes</h2>
+      {isLoading ? <p className="middle-of-page">Loading recipes...</p> : ""}
       <input
         name="search"
         type="text"
@@ -53,7 +54,7 @@ function RecipeList() {
         <option value="name-descend">Name descending</option>
         <option value="name-ascend">Name ascending</option>
       </select>
-      {isLoading ? "Loading recipes..." : arrOfElements}
+      {arrOfElements}
     </div>
   );
 }

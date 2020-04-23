@@ -4,3 +4,10 @@
   margin-right: auto;
   width: 300px;
 }
+
+.middle-of-page {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  margin-right: -50%;
+}

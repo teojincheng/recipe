@@ -135,7 +135,9 @@ function RecipeForm() {
           }
         ></textarea>
       </div>
-      <button onClick={() => handleButtonOnClick()}>Upload</button>
+      <button aria-label="upload-button" onClick={() => handleButtonOnClick()}>
+        Upload
+      </button>
     </div>
   );
 }
