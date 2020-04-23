@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import AxiosInstance from "./AxiosInstance";
 
@@ -8,9 +7,7 @@ function RecipeList() {
     recipesData: [],
   });
   const [searchQuery, setSearchQuery] = useState("");
-  const [resultFromDB, setResult] = useState({ results: [] });
   const [queryURL, setQueryURL] = useState("/recipes");
-  const [sortType, setSortType] = useState("recent");
   const changeQueryUrl = (sortOption) => {
     setQueryURL(`/recipes?sortType=${sortOption}`);
   };

@@ -3,15 +3,8 @@ import "./App.css";
 import RecipeForm from "./RecipeForm";
 import RecipeList from "./RecipeList";
 import RecipeItem from "./RecipeItem";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  NavLink,
-} from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 import Routes from "./constants/routes";
 import AxiosInstance from "./AxiosInstance";
 import FavoriteRecipes from "./FavoriteRecipes";
