@@ -42,6 +42,7 @@ function RecipeItem(props) {
             recipeId: recipeObj.recipe._id,
           }).then(function () {
             dispatch({ type: "SAVE-RECIPE", payload: recipeObj.recipe._id });
+            alert("Saved to favourites");
           })
         }
       >

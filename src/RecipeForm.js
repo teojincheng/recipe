@@ -13,8 +13,24 @@ function RecipeForm() {
     timeUnit: "",
   });
 
-  const dispatch = useDispatch();
+  const isRecipeObjEmpty = (obj) => {
+    for (var key in obj) {
+      if (obj[key] !== null && obj[key] != "") return false;
+    }
+    return true;
+  };
+  const handleButtonOnClick = () => {
+    let recipeObjectIsEmpty = isRecipeObjEmpty(recipeObj);
 
+    if (recipeObjectIsEmpty) {
+      alert("Please fill in all fields");
+      return;
+    } else {
+      AxiosInstance.post("/recipes", recipeObj).then(function () {
+        alert("Recipe created");
+      });
+    }
+  };
   return (
     <div className="wrapper">
       <h2>Post a recipe</h2>
@@ -119,15 +135,7 @@ function RecipeForm() {
           }
         ></textarea>
       </div>
-      <button
-        onClick={() =>
-          AxiosInstance.post("/recipes", recipeObj).then(function () {
-            alert("Recipe created");
-          })
-        }
-      >
-        Upload
-      </button>
+      <button onClick={() => handleButtonOnClick()}>Upload</button>
     </div>
   );
 }

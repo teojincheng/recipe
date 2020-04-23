@@ -14,6 +14,7 @@ import {
 } from "react-router-dom";
 import Routes from "./constants/routes";
 import AxiosInstance from "./AxiosInstance";
+import FavoriteRecipes from "./FavoriteRecipes";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,10 +29,12 @@ function App() {
         <header>
           <NavLink to={Routes.list}>Recipes List</NavLink>
           <NavLink to={Routes.form}>Upload Recipe</NavLink>
+          <NavLink to={Routes.favorites}>My favourite recipes</NavLink>
         </header>
         <Switch>
           <Route path={Routes.list} component={RecipeList} />
           <Route path={Routes.form} component={RecipeForm} />
+          <Route path={Routes.favorites} component={FavoriteRecipes} />
           <Route path={Routes.recipeId} component={RecipeItem} />
           <Route exact from="/" component={RecipeForm} />
         </Switch>
