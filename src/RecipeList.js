@@ -12,11 +12,7 @@ function RecipeList() {
   const [queryURL, setQueryURL] = useState("/recipes");
   const [sortType, setSortType] = useState("recent");
   const changeQueryUrl = (sortOption) => {
-    if (sortOption === "recent") {
-      setQueryURL("/recipes");
-    } else {
-      setQueryURL(`/recipes?sortType=${sortOption}`);
-    }
+    setQueryURL(`/recipes?sortType=${sortOption}`);
   };
   useEffect(() => {
     AxiosInstance.get(queryURL).then((response) => {
