@@ -7,18 +7,21 @@ function RecipeList() {
   const [recipesObj, setRecipesObj] = useState({
     recipesData: [],
   });
+  const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [queryURL, setQueryURL] = useState("/recipes");
   const changeQueryUrl = (sortOption) => {
     setQueryURL(`/recipes?sortType=${sortOption}`);
   };
   useEffect(() => {
+    setIsLoading(true);
     AxiosInstance.get(queryURL).then((response) => {
       setRecipesObj({
         ...recipesObj,
         recipesData: response.data,
       });
     });
+    setIsLoading(false);
   }, [queryURL]);
 
   const arrOfElements = recipesObj.recipesData.map((recipe) => (
@@ -50,7 +53,7 @@ function RecipeList() {
         <option value="name-descend">Name descending</option>
         <option value="name-ascend">Name ascending</option>
       </select>
-      {arrOfElements}
+      {isLoading ? "Loading recipes..." : arrOfElements}
     </div>
   );
 }
