@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import "./RecipeList.css";
 import AxiosInstance from "./AxiosInstance";
 
 function RecipeList() {
@@ -23,7 +24,7 @@ function RecipeList() {
   const arrOfElements = recipesObj.recipesData.map((recipe) => (
     <div key={recipe._id}>
       <NavLink key={recipe._id} to={`/${recipe._id}`}>
-        {recipe.name}
+        <p className="body-text">{recipe.name}</p>
       </NavLink>
     </div>
   ));

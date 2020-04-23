@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AxiosInstance from "./AxiosInstance";
 import { useDispatch } from "react-redux";
+import "./RecipeItem.css";
 
 function RecipeItem(props) {
   const recipeId = props.match.params.recipeId;
@@ -21,20 +22,26 @@ function RecipeItem(props) {
   const dispatch = useDispatch();
 
   return (
-    <div className="wrapper">
+    <section className="wrapper">
       <h2>{recipeObj.recipe.name}</h2>
       <br />
       <div>Description:</div>
-      <div>{recipeObj.recipe.description}</div>
+      <div>
+        <p className="body-text">{recipeObj.recipe.description}</p>
+      </div>
       <br />
       <div>Cooking Time:</div>
       <div>{recipeObj.recipe.cookingTime}</div>
       <br />
       <div>Ingredients:</div>
-      <div>{recipeObj.recipe.ingredients}</div>
+      <div>
+        <p className="body-text">{recipeObj.recipe.ingredients}</p>
+      </div>
       <br />
       <div>Cooking Method:</div>
-      <div>{recipeObj.recipe.cookingMethod}</div>
+      <div>
+        <p className="body-text">{recipeObj.recipe.cookingMethod}</p>
+      </div>
 
       <button
         onClick={() =>
@@ -48,7 +55,7 @@ function RecipeItem(props) {
       >
         Save to favourites
       </button>
-    </div>
+    </section>
   );
 }
 

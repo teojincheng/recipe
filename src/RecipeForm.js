@@ -25,6 +25,7 @@ function RecipeForm() {
       alert("Please fill in all fields");
       return;
     } else {
+      recipeObj.cookingTime += ` ${recipeObj.timeUnit}`;
       AxiosInstance.post("/recipes", recipeObj).then(function () {
         alert("Recipe created");
       });
