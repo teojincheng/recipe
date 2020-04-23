@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./RecipeForm.css";
-
+import AxiosInstance from "./AxiosInstance";
 import { useSelector, useDispatch } from "react-redux";
 
 function RecipeForm() {
@@ -120,7 +120,11 @@ function RecipeForm() {
         ></textarea>
       </div>
       <button
-        onClick={() => dispatch({ type: "UPLOAD-RECIPE", payload: recipeObj })}
+        onClick={() =>
+          AxiosInstance.post("/recipes", recipeObj).then(function () {
+            alert("Recipe created");
+          })
+        }
       >
         Upload
       </button>
