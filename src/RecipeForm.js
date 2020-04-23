@@ -107,8 +107,9 @@ function RecipeForm() {
         <label>Cooking method:</label>
       </div>
       <div>
-        <input
-          type="text"
+        <textarea
+          rows="5"
+          cols="30"
           name="cookingMethod"
           onChange={(event) =>
             setRecipeObj({
@@ -116,8 +117,7 @@ function RecipeForm() {
               [event.target.name]: event.target.value,
             })
           }
-          value={recipeObj.cookingMethod}
-        />
+        ></textarea>
       </div>
       <button
         onClick={() => dispatch({ type: "UPLOAD-RECIPE", payload: recipeObj })}
