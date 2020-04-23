@@ -19,7 +19,8 @@ react-router-dom: version 5.1.2
 
 ## How to use: 
 
-`git clone`
+`git clone`  
+`npm install`  
 
 `npm start`  
 Runs the app in the development mode.<br />
@@ -34,3 +35,5 @@ Launches the test runner in the interactive watch mode.
 * The favourite recipes should be listed out by name
 * List of recipes can use pagination and infinite scroll
 
+### Back end repo  
+https://github.com/teojincheng/recipe-backend
