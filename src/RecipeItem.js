@@ -38,7 +38,11 @@ function RecipeItem(props) {
 
       <button
         onClick={() =>
-          dispatch({ type: "SAVE-RECIPE", payload: recipeObj.recipe._id })
+          AxiosInstance.post("/saved-recipes", {
+            recipeId: recipeObj.recipe._id,
+          }).then(function () {
+            dispatch({ type: "SAVE-RECIPE", payload: recipeObj.recipe._id });
+          })
         }
       >
         Save to favourites
